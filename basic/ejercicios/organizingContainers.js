@@ -3,32 +3,62 @@ const IMPOSSIBLE = 'Impossible';
 
 // Complete the organizingContainers function below.
 function organizingContainers(container) {
+    let cantidadesPorContenedor = [];
+    let cantidadesPorTipo = [];
+
+    container.forEach(element => {
+        let sumatoriaPorContenedores = 0;
+        element.forEach(num => {
+            sumatoriaPorContenedores += num;
+        })
+        cantidadesPorContenedor.push(sumatoriaPorContenedores);
+    });
+
+    for(i = 0; i < container.length; i++) {
+        let sumatoriaPorTipos = 0;
+        container.forEach(element => {
+            sumatoriaPorTipos += element[i]
+        })
+        cantidadesPorTipo.push(sumatoriaPorTipos);
+    }
+
+    cantidadesPorContenedor = cantidadesPorContenedor.concat().sort();
+    cantidadesPorTipo = cantidadesPorTipo.concat().sort();
     
-    //return resp;
+    for(i = 0; i < cantidadesPorContenedor; i++) {
+        if (cantidadesPorContenedor[i] !== cantidadesPorTipo[i])
+        return IMPOSSIBLE;
+    }
+
+    return POSSIBLE;
+
+    
 }
 
 console.log(organizingContainers(
-    [[1,3,1],
-     [2,1,2],
-     [3,3,3]]
+    [[1,3,1],   // 5
+     [2,1,2],   // 5
+     [3,3,3]]   // 9
+   // 6, 7, 6
 )== IMPOSSIBLE);
 
 console.log(organizingContainers(
-    [[0, 2, 1],
-     [1, 1, 1],
-     [2, 0, 0]]
+    [[0, 2, 1], // 3
+     [1, 1, 1], // 3
+     [2, 0, 0]] // 2
+   // 3, 3, 2
 )== POSSIBLE);
 
 console.log(organizingContainers(
-    [[999336263, 998799923],
+    [[999336263, 998799923], 
     [998799923, 999763019]]
 ) == POSSIBLE);
 
 console.log(organizingContainers(
-    [997612619, 934920795, 998879231, 999926463],
+    [[997612619, 934920795, 998879231, 999926463],
     [960369681, 997828120, 999792735, 979622676],
     [999013654, 998634077, 997988323, 958769423],
-    [997409523, 999301350, 940952923, 993020546]
+    [997409523, 999301350, 940952923, 993020546]]
 )== POSSIBLE);
 
 console.log(organizingContainers(
