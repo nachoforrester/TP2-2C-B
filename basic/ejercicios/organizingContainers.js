@@ -25,9 +25,10 @@ function organizingContainers(container) {
     cantidadesPorContenedor = cantidadesPorContenedor.concat().sort();
     cantidadesPorTipo = cantidadesPorTipo.concat().sort();
     
-    for(i = 0; i < cantidadesPorContenedor; i++) {
-        if (cantidadesPorContenedor[i] !== cantidadesPorTipo[i])
-        return IMPOSSIBLE;
+    for(j = 0; j < cantidadesPorContenedor.length; j++) {
+        if (cantidadesPorContenedor[j] !== cantidadesPorTipo[j]){
+            return IMPOSSIBLE;
+        }
     }
 
     return POSSIBLE;
@@ -40,7 +41,7 @@ console.log(organizingContainers(
      [2,1,2],   // 5
      [3,3,3]]   // 9
    // 6, 7, 6
-)== IMPOSSIBLE);
+) == IMPOSSIBLE);
 
 console.log(organizingContainers(
     [[0, 2, 1], // 3
